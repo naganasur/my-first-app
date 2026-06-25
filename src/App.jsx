@@ -4,7 +4,8 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import Greeting from './greeting'
-
+import NameForm from './NameForm'
+import TodoApp from './TodoApp'
 function App() {
   const [count, setCount] = useState(0)
   const people = [
@@ -15,7 +16,8 @@ function App() {
 
   return (
     <>
-     
+     <NameForm />
+     <TodoApp/>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -30,6 +32,7 @@ function App() {
         </div>
        {people.map((person, index) => (
   <Greeting key={index} name={person.name} age={person.age} city={person.city} />
+  
 ))}
         <button
           type="button"
