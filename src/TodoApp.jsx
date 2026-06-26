@@ -27,6 +27,12 @@ function TodoApp(){
                  )
     };
 
+    const allstrike = () => {
+  setTodos(
+    todos.map((todo) => ({ ...todo, completed: true }))
+  );
+};
+
     return(
         <div>
             <h2>My Todo List</h2>
@@ -37,6 +43,7 @@ function TodoApp(){
             onChange={(e) => setInput(e.target.value)}
             ></input>
             <button onClick={handleAdd}>Add</button>
+            <button onClick={allstrike}>strike all</button>
             <ul>
                 {todos.map((todo)=>(
                     <li key={todo.id}>
