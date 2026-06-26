@@ -33,6 +33,23 @@ function TodoApp(){
   );
 };
 
+const deleteall = () =>{
+        setTodos([])
+    };
+
+const completedcounter = todos.filter((todo)=> todo.completed).length;
+
+
+const [editingId , setEditingId] = useState(null);
+const handleEditChange = (id, e) => {
+  setTodos(
+    todos.map((todo) =>
+      todo.id === id ? { ...todo, text: e.target.value } : todo
+    )
+  );
+};
+
+
     return(
         <div>
             <h2>My Todo List</h2>
@@ -44,20 +61,34 @@ function TodoApp(){
             ></input>
             <button onClick={handleAdd}>Add</button>
             <button onClick={allstrike}>strike all</button>
+            <button onClick={deleteall}>deleteall todos</button>
             <ul>
                 {todos.map((todo)=>(
                     <li key={todo.id}>
-                        <span style={{textDecoration: todo.completed ? "line-through":"none"}}
-                            onClick = {() => handletoggle(todo.id)}
-                                >
-                                     {todo.text}
-                        </span>
-                            
-                       
-                    <button onClick = { () => handleDelete(todo.id)}>delete</button>
-                    </li>
+  {editingId === todo.id ? (
+    <input
+      type="text"
+      value={todo.text}
+      onChange={(e) => handleEditChange(todo.id, e)}
+
+    />
+  ) : (
+    <span
+      style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+      onClick={() => handletoggle(todo.id)}
+    >
+      {todo.text}
+    </span>
+  )}
+
+  <button onClick={() => setEditingId(todo.id)}>Edit</button>
+  <button onClick={() => setEditingId(null)}>Save</button>
+  <button onClick={() => handleDelete(todo.id)}>Delete</button>
+</li>
+
                 ))}
             </ul>
+            <p>{completedcounter} of {todos.length} completed </p>
         </div>
     );
 }
