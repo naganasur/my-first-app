@@ -51,7 +51,9 @@ const handleEditChange = (id, e) => {
 
 
     return(
+        
         <div>
+            
             <h2>My Todo List</h2>
             <input
             type="text"
@@ -89,7 +91,9 @@ const handleEditChange = (id, e) => {
                 ))}
             </ul>
             <p>{completedcounter} of {todos.length} completed </p>
+           
         </div>
     );
+    
 }
 export default TodoApp
