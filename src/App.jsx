@@ -2,7 +2,7 @@ import './App.css'
 import RandonFacts from './RandomFacts'
 import TodoApp from './TodoApp'
 import UserList from './UserList'
-
+import StudentList from './StudentList'
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <TodoApp />
       <UserList />
       <RandonFacts/>
+      <StudentList/>
     </>
   )
 }
